@@ -7235,7 +7235,7 @@ var $author$project$Main$update = F2(
 					}
 				case 'KeyPress':
 					if (msg.a === ' ') {
-						return _Utils_Tuple2(
+						return _Utils_eq(model.status, $author$project$Main$Waiting) ? _Utils_Tuple2(
 							_Utils_update(
 								model,
 								{imageList: model.originalImageList}),
@@ -7243,7 +7243,7 @@ var $author$project$Main$update = F2(
 								_List_fromArray(
 									[
 										$author$project$Main$pickOne(model.originalImageList)
-									])));
+									]))) : _Utils_Tuple2(model, $elm$core$Platform$Cmd$none);
 					} else {
 						break _v0$5;
 					}
