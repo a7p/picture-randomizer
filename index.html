@@ -7128,6 +7128,7 @@ var $elm$url$Url$Builder$relative = F2(
 			A2($elm$core$String$join, '/', pathSegments),
 			$elm$url$Url$Builder$toQuery(parameters));
 	});
+var $elm$browser$Browser$Navigation$reload = _Browser_reload(false);
 var $elm$url$Url$Builder$QueryParameter = F2(
 	function (a, b) {
 		return {$: 'QueryParameter', a: a, b: b};
@@ -7215,7 +7216,12 @@ var $author$project$Main$update = F2(
 								_Utils_update(
 									model,
 									{lastAction: time, status: $author$project$Main$ShowingWhite}),
-								A2($elm$browser$Browser$Navigation$pushUrl, model.key, model.url)) : _Utils_Tuple2(model, $elm$core$Platform$Cmd$none);
+								$elm$core$Platform$Cmd$batch(
+									_List_fromArray(
+										[
+											A2($elm$browser$Browser$Navigation$pushUrl, model.key, model.url),
+											$elm$browser$Browser$Navigation$reload
+										]))) : _Utils_Tuple2(model, $elm$core$Platform$Cmd$none);
 						case 'ShowingWhite':
 							return (_Utils_cmp(
 								model.config.intervalWhite + $elm$time$Time$posixToMillis(model.lastAction),
